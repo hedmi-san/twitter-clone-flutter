@@ -14,6 +14,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Twitter Demo',
       theme: AppTheme.theme,
+      debugShowCheckedModeBanner: false,
       home: const Login(),
     );
   }
