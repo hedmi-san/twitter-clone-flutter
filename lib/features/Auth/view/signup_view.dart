@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:twitter_clone/constants/constants.dart';
-import 'package:twitter_clone/features/Auth/view/signup_view.dart';
-import 'package:twitter_clone/theme/theme.dart';
+import 'package:twitter_clone/features/Auth/view/login_view.dart';
+import '../../../constants/constants.dart';
+import '../../../theme/theme.dart';
 import '../widgets/auth_field.dart';
 
-class Login extends StatefulWidget {
-  const Login({super.key});
+class SignUp extends StatefulWidget {
+  const SignUp({super.key});
 
   @override
-  State<Login> createState() => _LoginState();
+  State<SignUp> createState() => _SignUpState();
 }
 
-class _LoginState extends State<Login> {
+class _SignUpState extends State<SignUp> {
   final appbar = UIConstants.appBar();
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
@@ -71,17 +71,17 @@ class _LoginState extends State<Login> {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                const Text("Don't have an account ?'"),
+                const Text("Already have an account ?'"),
                 TextButton(
                     onPressed: () {
                       Navigator.pushReplacement(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => const SignUp(),
+                            builder: (context) => const Login(),
                           ));
                     },
                     child: const Text(
-                      'SignUp',
+                      'Login',
                       style: TextStyle(
                         color: Pallete.blueColor,
                       ),
