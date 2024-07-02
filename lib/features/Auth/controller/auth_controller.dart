@@ -20,6 +20,10 @@ class AuthController extends StateNotifier<bool> {
       required BuildContext context}) async {
     state = true;
     final res = await _authAPI.signUp(email: email, password: password);
-    res.fold((l) => showSnackBar(context, l.message), (r) => print(r.name));
+    res.fold((l) => showSnackBar(context, l.message), (r) {
+      showSnackBar(
+          context, 'Account created successfully! You can now log in.');
+      print('User created: ${r.name}');
+    });
   }
 }

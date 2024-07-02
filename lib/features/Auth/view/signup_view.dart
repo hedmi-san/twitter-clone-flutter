@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:twitter_clone/features/Auth/controller/auth_controller.dart';
 import 'package:twitter_clone/features/Auth/view/login_view.dart';
 import '../../../constants/constants.dart';
+import '../../../core/utils.dart';
 import '../../../theme/theme.dart';
 import '../widgets/auth_field.dart';
 
@@ -25,11 +26,15 @@ class _SignUpState extends ConsumerState<SignUp> {
   }
 
   void onSignUp() {
-    ref.read(authControllerProvider.notifier).signUp(
-          email: emailController.text,
-          password: passwordController.text,
-          context: context,
-        );
+    if (emailController.text.isNotEmpty && passwordController.text.isNotEmpty) {
+      ref.read(authControllerProvider.notifier).signUp(
+            email: emailController.text,
+            password: passwordController.text,
+            context: context,
+          );
+    } else {
+      showSnackBar(context, 'Please enter email and password');
+    }
   }
 
   @override
@@ -64,7 +69,7 @@ class _SignUpState extends ConsumerState<SignUp> {
                 children: [
                   ElevatedButton(
                     onPressed: () {
-                      onSignUp();
+                      onSignUp;
                     },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.white,
