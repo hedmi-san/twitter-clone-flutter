@@ -1,17 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:twitter_clone/features/Auth/controller/auth_controller.dart';
 import 'package:twitter_clone/features/Auth/view/login_view.dart';
 import '../../../constants/constants.dart';
 import '../../../theme/theme.dart';
 import '../widgets/auth_field.dart';
 
-class SignUp extends StatefulWidget {
+class SignUp extends ConsumerStatefulWidget {
   const SignUp({super.key});
 
   @override
-  State<SignUp> createState() => _SignUpState();
+  ConsumerState<SignUp> createState() => _SignUpState();
 }
 
-class _SignUpState extends State<SignUp> {
+class _SignUpState extends ConsumerState<SignUp> {
   final appbar = UIConstants.appBar();
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
@@ -20,6 +22,14 @@ class _SignUpState extends State<SignUp> {
     super.dispose();
     emailController.dispose();
     passwordController.dispose();
+  }
+
+  void onSignUp() {
+    ref.read(authControllerProvider.notifier).signUp(
+          email: emailController.text,
+          password: passwordController.text,
+          context: context,
+        );
   }
 
   @override
@@ -53,7 +63,9 @@ class _SignUpState extends State<SignUp> {
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
                   ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      onSignUp();
+                    },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.white,
                     ),
@@ -71,7 +83,7 @@ class _SignUpState extends State<SignUp> {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                const Text("Already have an account ?'"),
+                const Text("Already have an account ?"),
                 TextButton(
                     onPressed: () {
                       Navigator.pushReplacement(
