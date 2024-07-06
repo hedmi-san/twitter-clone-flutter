@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:twitter_clone/theme/app_theme.dart';
-
 import 'features/Auth/view/login_view.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
 void main() {
-  runApp(const ProviderScope(child: MyApp()));
+  runApp(const MyApp());
 }
+
+final supabase = Supabase.instance.client;
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -20,5 +21,3 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-
-//video 01:16:35

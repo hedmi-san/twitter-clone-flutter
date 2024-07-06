@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:twitter_clone/constants/constants.dart';
 import 'package:twitter_clone/features/Auth/view/signup_view.dart';
 import 'package:twitter_clone/theme/theme.dart';
+import '../../Home/view/home_view.dart';
 import '../widgets/auth_field.dart';
 
 class Login extends StatefulWidget {
@@ -53,7 +54,13 @@ class _LoginState extends State<Login> {
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
                   ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const Home(),
+                          ));
+                    },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.white,
                     ),

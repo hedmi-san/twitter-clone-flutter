@@ -1,20 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:twitter_clone/features/Auth/controller/auth_controller.dart';
 import 'package:twitter_clone/features/Auth/view/login_view.dart';
 import '../../../constants/constants.dart';
-import '../../../core/utils.dart';
 import '../../../theme/theme.dart';
+import '../../Home/view/home_view.dart';
 import '../widgets/auth_field.dart';
 
-class SignUp extends ConsumerStatefulWidget {
+class SignUp extends StatefulWidget {
   const SignUp({super.key});
 
   @override
-  ConsumerState<SignUp> createState() => _SignUpState();
+  State<SignUp> createState() => _SignUpState();
 }
 
-class _SignUpState extends ConsumerState<SignUp> {
+class _SignUpState extends State<SignUp> {
   final appbar = UIConstants.appBar();
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
@@ -23,18 +21,6 @@ class _SignUpState extends ConsumerState<SignUp> {
     super.dispose();
     emailController.dispose();
     passwordController.dispose();
-  }
-
-  void onSignUp() {
-    if (emailController.text.isNotEmpty && passwordController.text.isNotEmpty) {
-      ref.read(authControllerProvider.notifier).signUp(
-            email: emailController.text,
-            password: passwordController.text,
-            context: context,
-          );
-    } else {
-      showSnackBar(context, 'Please enter email and password');
-    }
   }
 
   @override
@@ -69,7 +55,11 @@ class _SignUpState extends ConsumerState<SignUp> {
                 children: [
                   ElevatedButton(
                     onPressed: () {
-                      onSignUp;
+                      Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const Home(),
+                          ));
                     },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.white,
