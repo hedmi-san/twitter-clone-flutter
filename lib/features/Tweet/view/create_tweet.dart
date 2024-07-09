@@ -1,7 +1,10 @@
+import 'dart:io';
+
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:twitter_clone/constants/assets_constants.dart';
+import 'package:twitter_clone/core/utils.dart';
 import 'package:twitter_clone/theme/pallete.dart';
 
 class CreateTweetScreen extends StatefulWidget {
@@ -13,6 +16,14 @@ class CreateTweetScreen extends StatefulWidget {
 
 class _CreateTweetScreenState extends State<CreateTweetScreen> {
   final tweetTextController = TextEditingController();
+  List<File> images = [];
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+    tweetTextController.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -71,7 +82,20 @@ class _CreateTweetScreenState extends State<CreateTweetScreen> {
                       ),
                     )
                   ],
-                )
+                ),
+                if (images.isNotEmpty)
+                  CarouselSlider(
+                    items: images.map((file) {
+                      return Container(
+                          width: MediaQuery.sizeOf(context).width,
+                          margin: const EdgeInsets.symmetric(horizontal: 5),
+                          child: Image.file(file));
+                    }).toList(),
+                    options: CarouselOptions(
+                      height: 400,
+                      enableInfiniteScroll: false,
+                    ),
+                  ),
               ],
             ),
           ),
@@ -94,9 +118,17 @@ class _CreateTweetScreenState extends State<CreateTweetScreen> {
                 right: 15,
                 bottom: 20,
               ),
-              child: SvgPicture.asset(
-                AssetsConstants.galleryIcon,
-                height: 30,
+              child: GestureDetector(
+                onTap: () async {
+                  final pickedImages = await pickImages();
+                  setState(() {
+                    images.addAll(pickedImages);
+                  });
+                },
+                child: SvgPicture.asset(
+                  AssetsConstants.galleryIcon,
+                  height: 30,
+                ),
               ),
             ),
             Padding(
