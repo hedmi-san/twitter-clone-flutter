@@ -1,10 +1,8 @@
-import 'dart:io';
-
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:gallery_picker/gallery_picker.dart';
 import 'package:twitter_clone/constants/assets_constants.dart';
-import 'package:twitter_clone/core/utils.dart';
 import 'package:twitter_clone/theme/pallete.dart';
 
 class CreateTweetScreen extends StatefulWidget {
@@ -16,10 +14,9 @@ class CreateTweetScreen extends StatefulWidget {
 
 class _CreateTweetScreenState extends State<CreateTweetScreen> {
   final tweetTextController = TextEditingController();
-  List<File> images = [];
+  List<MediaFile> _images = [];
   @override
   void dispose() {
-    // TODO: implement dispose
     super.dispose();
     tweetTextController.dispose();
   }
@@ -80,17 +77,22 @@ class _CreateTweetScreenState extends State<CreateTweetScreen> {
                         ),
                         maxLines: null,
                       ),
-                    )
+                    ),
                   ],
                 ),
-                if (images.isNotEmpty)
+                if (_images.isNotEmpty)
                   CarouselSlider(
-                    items: images.map((file) {
-                      return Container(
-                          width: MediaQuery.sizeOf(context).width,
-                          margin: const EdgeInsets.symmetric(horizontal: 5),
-                          child: Image.file(file));
-                    }).toList(),
+                    items: _images
+                        .map((file) {
+                          if (file.isImage) {
+                            return PhotoProvider(media: file);
+                          } else if (file.isVideo) {
+                            return VideoProvider(media: file);
+                          }
+                          return null;
+                        })
+                        .whereType<Widget>()
+                        .toList(),
                     options: CarouselOptions(
                       height: 400,
                       enableInfiniteScroll: false,
@@ -120,9 +122,13 @@ class _CreateTweetScreenState extends State<CreateTweetScreen> {
               ),
               child: GestureDetector(
                 onTap: () async {
-                  final pickedImages = await pickImages();
+                  List<MediaFile> mediafiles = await GalleryPicker.pickMedia(
+                        context: context,
+                        singleMedia: false,
+                      ) ??
+                      [];
                   setState(() {
-                    images.addAll(pickedImages);
+                    _images = mediafiles;
                   });
                 },
                 child: SvgPicture.asset(
