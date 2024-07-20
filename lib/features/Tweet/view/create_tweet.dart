@@ -85,16 +85,23 @@ class _CreateTweetScreenState extends State<CreateTweetScreen> {
                     items: _images
                         .map((file) {
                           if (file.isImage) {
-                            return PhotoProvider(media: file);
+                            return Container(
+                              width: MediaQuery.sizeOf(context).width,
+                              margin: const EdgeInsets.symmetric(horizontal: 5),
+                              child: PhotoProvider(media: file),
+                            );
                           } else if (file.isVideo) {
-                            return VideoProvider(media: file);
+                            return Container(
+                              width: MediaQuery.sizeOf(context).width,
+                              margin: const EdgeInsets.symmetric(horizontal: 5),
+                              child: VideoProvider(media: file),
+                            );
                           }
                           return null;
                         })
                         .whereType<Widget>()
                         .toList(),
                     options: CarouselOptions(
-                      height: 400,
                       enableInfiniteScroll: false,
                     ),
                   ),
