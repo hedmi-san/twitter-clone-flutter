@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'package:twitter_clone/features/Display%20Tweet/widget/tweet_card.dart';
 import '../../../data/data.dart';
 
 class TweetList extends StatefulWidget {
@@ -16,7 +16,9 @@ class _TweetListState extends State<TweetList> {
       itemCount: tweets.length,
       itemBuilder: (context, index) {
         final tweet = tweets[index];
-        return Text(tweet.text);
+        return TweetCard(
+          tweet: tweet,
+        );
       },
     );
   }

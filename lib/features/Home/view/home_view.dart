@@ -66,10 +66,10 @@ class _HomeState extends State<Home> {
             ),
           ),
           BottomNavigationBarItem(
-            icon: SvgPicture.asset(
+            icon: Image.asset(
               _page == 2
-                  ? AssetsConstants.notifFilledIcon
-                  : AssetsConstants.notifOutlinedIcon,
+                  ? AssetsConstants.profileFilledIcon
+                  : AssetsConstants.profileOutlinedIcon,
               color: Pallete.whiteColor,
             ),
           ),

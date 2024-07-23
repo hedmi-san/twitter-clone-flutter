@@ -1,8 +1,10 @@
 // ignore_for_file: deprecated_member_use
+
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import '../../../constants/constants.dart';
 import 'package:twitter_clone/theme/theme.dart';
+import '../features/Display Tweet/view/tweet_list.dart';
 
 class UIConstants {
   static AppBar appBar() {
@@ -17,8 +19,8 @@ class UIConstants {
   }
 
   static List<Widget> bottomTabBarPages = [
-    const Text('Feed Screen'),
+    const TweetList(),
     const Text('Search Screen'),
-    const Text('Notification Screen'),
+    const Text('Profile Screen'),
   ];
 }
