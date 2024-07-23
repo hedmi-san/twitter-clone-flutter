@@ -4,6 +4,9 @@ import 'package:flutter_svg/svg.dart';
 import 'package:gallery_picker/gallery_picker.dart';
 import 'package:twitter_clone/constants/assets_constants.dart';
 import 'package:twitter_clone/theme/pallete.dart';
+import 'dart:math';
+import '../../../data/data.dart';
+import '../../../data/model.dart';
 
 class CreateTweetScreen extends StatefulWidget {
   const CreateTweetScreen({super.key});
@@ -13,6 +16,24 @@ class CreateTweetScreen extends StatefulWidget {
 }
 
 class _CreateTweetScreenState extends State<CreateTweetScreen> {
+  void addingnewTweet() {
+    if (tweetTextController.text.isNotEmpty) {
+      Tweet newTweet = Tweet(
+        uid: 'user000',
+        iD: 'tweet${Random().nextInt(999)}',
+        text: tweetTextController.text,
+        imagelinks: [],
+        tweetTime: DateTime.now(),
+      );
+      tweets.add(newTweet);
+      tweetTextController.clear();
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Tweet added successfully!')),
+      );
+      Navigator.pop(context);
+    }
+  }
+
   final tweetTextController = TextEditingController();
   List<MediaFile> _images = [];
   @override
@@ -33,7 +54,7 @@ class _CreateTweetScreenState extends State<CreateTweetScreen> {
         ),
         actions: [
           ElevatedButton(
-            onPressed: () {},
+            onPressed: addingnewTweet,
             style: ElevatedButton.styleFrom(
               backgroundColor: Pallete.blueColor,
             ),
