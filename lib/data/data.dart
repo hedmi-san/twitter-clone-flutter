@@ -62,7 +62,9 @@ List<Tweet> tweets = [
     iD: "tweet007",
     text:
         "Just adopted this adorable puppy! Meet Max, our new family member. #puppylove #adoption",
-    imagelinks: ["https://example.com/puppy_max.jpg"],
+    imagelinks: [
+      "https://th.bing.com/th/id/OIP.08koL6WINLABYfJRgfw8rwHaE8?rs=1&pid=ImgDetMain"
+    ],
     tweetTime: DateTime(2024, 7, 21, 11, 20),
   ),
   Tweet(
@@ -71,7 +73,7 @@ List<Tweet> tweets = [
     text:
         "Celebrating my birthday today! Thank you all for the wishes. Feeling blessed. #birthday #celebration",
     imagelinks: [
-      "https://th.bing.com/th/id/R.34fcd82777c500a2c44c89a3834f6535?rik=qLSRs2yB0EKTNw&riu=http%3a%2f%2fupload.wikimedia.org%2fwikipedia%2fcommons%2f6%2f65%2fCute_beagle_puppy_lilly.jpg&ehk=oK23RnzCpV9HpTAPxNUYYcJdFhueuwnWc05%2b2oGByH0%3d&risl=&pid=ImgRaw&r=0",
+      "https://cdn-s-www.republicain-lorrain.fr/images/D5FF4B66-4C0A-46E4-A36C-AFCD6939D2C7/NW_raw/premier-anniversaire-de-la-contestation-en-algerie-si-elle-a-su-preserver-son-caractere-pacifique-elle-doit-se-reinventer-pour-obtenir-de-nouveaux-resultats-face-au-pouvoir-photo-ryad-kramdi-afp-1582309364.jpg"
     ],
     tweetTime: DateTime(2024, 7, 21, 13, 45),
   ),
@@ -79,8 +81,10 @@ List<Tweet> tweets = [
     uid: "user333",
     iD: "tweet009",
     text:
-        "Just finished reading an amazing book. Highly recommend 'The Future of AI' by Dr. Jane Smith. #bookrecommendation #AI",
-    imagelinks: ["https://example.com/book_cover.jpg"],
+        "Just finished reading an amazing book. Highly recommend 'Artificial Intelligence' by Dr. David Brown. #bookrecommendation #AI",
+    imagelinks: [
+      "https://th.bing.com/th/id/R.c9d93e3faa89cbac5545792994a0f06f?rik=1L3ZFYHFnfC6HA&pid=ImgRaw&r=0"
+    ],
     tweetTime: DateTime(2024, 7, 21, 16, 30),
   ),
   Tweet(
@@ -97,7 +101,8 @@ List<Tweet> tweets = [
     text:
         "Just landed in Paris for a week-long vacation. Can't wait to explore! #travel #Paris",
     imagelinks: [
-      "https://img-3.journaldesfemmes.fr/u4UYSKH_a6D2FObCbFty6UPf5Us=/3000x/smart/4215c659c7934058818a6372d55ead60/ccmcms-jdf/10084159.jpg"
+      "https://img-3.journaldesfemmes.fr/u4UYSKH_a6D2FObCbFty6UPf5Us=/3000x/smart/4215c659c7934058818a6372d55ead60/ccmcms-jdf/10084159.jpg",
+      "https://th.bing.com/th/id/OIP.cdGxqyTMbhmietK_2pMhCAHaE0?w=2148&h=1396&rs=1&pid=ImgDetMain"
     ],
     tweetTime: DateTime(2024, 7, 21, 15, 00),
   ),
