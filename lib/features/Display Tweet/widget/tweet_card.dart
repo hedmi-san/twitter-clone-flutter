@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:like_button/like_button.dart';
 import 'package:timeago/timeago.dart' as timeago;
 import 'package:twitter_clone/constants/constants.dart';
 import 'package:twitter_clone/features/Display%20Tweet/widget/carousel_image.dart';
@@ -55,10 +57,19 @@ class TweetCard extends StatelessWidget {
                   text: '0',
                   onTap: () {},
                 ),
-                TweetIconButton(
-                  pathName: AssetsConstants.likeOutlinedIcon,
-                  text: '0',
-                  onTap: () {},
+                LikeButton(
+                  size: 25,
+                  likeBuilder: (isLiked) {
+                    return isLiked
+                        ? SvgPicture.asset(
+                            AssetsConstants.likeFilledIcon,
+                            color: Pallete.redColor,
+                          )
+                        : SvgPicture.asset(
+                            AssetsConstants.likeOutlinedIcon,
+                            color: Pallete.greyColor,
+                          );
+                  },
                 ),
                 IconButton(
                     onPressed: () {},
