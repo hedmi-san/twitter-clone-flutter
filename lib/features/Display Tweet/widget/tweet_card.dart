@@ -70,6 +70,16 @@ class TweetCard extends StatelessWidget {
                             color: Pallete.greyColor,
                           );
                   },
+                  likeCount: 0,
+                  countBuilder: (likeCount, isLiked, text) {
+                    return Text(
+                      text,
+                      style: TextStyle(
+                        color: isLiked ? Pallete.redColor : Pallete.whiteColor,
+                        fontSize: 16,
+                      ),
+                    );
+                  },
                 ),
                 IconButton(
                     onPressed: () {},
