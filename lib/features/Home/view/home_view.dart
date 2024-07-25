@@ -32,7 +32,7 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: appbar,
+      appBar: _page == 0 ? appbar : null,
       body: IndexedStack(
         index: _page,
         children: UIConstants.bottomTabBarPages,
