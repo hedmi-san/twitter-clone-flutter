@@ -5,6 +5,7 @@ import 'package:flutter_svg/svg.dart';
 import '../../../constants/constants.dart';
 import 'package:twitter_clone/theme/theme.dart';
 import '../features/Display Tweet/view/tweet_list.dart';
+import '../features/Profile/view/profile.dart';
 import '../features/Search/view/search.dart';
 
 class UIConstants {
@@ -22,6 +23,6 @@ class UIConstants {
   static List<Widget> bottomTabBarPages = [
     const TweetList(),
     const SearchScreen(),
-    const Text('Profile Screen'),
+    const Profile(),
   ];
 }

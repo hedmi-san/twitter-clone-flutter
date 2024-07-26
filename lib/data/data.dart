@@ -117,3 +117,23 @@ List<Tweet> tweets = [
     tweetTime: DateTime(2024, 7, 21, 17, 30),
   ),
 ];
+
+UserModel user = const UserModel(
+  email: 'adolfHitler45@gmail.com',
+  name: 'Adolf Hitler',
+  followers: [
+    'joseph stalin',
+    'george bush',
+    'Winston Churchill',
+    'Harry Truman',
+    'Hideki Tojo'
+  ],
+  following: ['Leo Messi'],
+  profilePic:
+      'https://th.bing.com/th/id/R.50187a57be2fd5f57be4e9506431631f?rik=U3zmPdrUi8IMOw&pid=ImgRaw&r=0',
+  bannerPic:
+      'https://render.fineartamerica.com/images/rendered/default/poster/8.000/4.000/break/images/artworkimages/medium/1/nazi-flag-color-added-2016-david-lee-guss.jpg',
+  uid: 'user069',
+  bio: 'A dead jewish is a good jewish',
+  isTwitterBlue: true,
+);
