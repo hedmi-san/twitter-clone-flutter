@@ -1,8 +1,6 @@
-import 'dart:ffi';
-
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:twitter_clone/data/data.dart';
+import 'package:twitter_clone/features/Profile/widget/followers.dart';
 import 'package:twitter_clone/theme/pallete.dart';
 
 class UserProfile extends StatefulWidget {
@@ -74,6 +72,37 @@ class _UserProfileState extends State<UserProfile> {
                       fontSize: 25,
                       fontWeight: FontWeight.bold,
                     ),
+                  ),
+                  Text(
+                    '@${user.name}',
+                    style: const TextStyle(
+                      fontSize: 17,
+                      color: Pallete.greyColor,
+                    ),
+                  ),
+                  Text(
+                    user.bio,
+                    style: const TextStyle(
+                      fontSize: 17,
+                    ),
+                  ),
+                  const SizedBox(height: 10),
+                  Row(
+                    children: [
+                      FollowCount(
+                          count: user.following.length, text: 'Following'),
+                      const SizedBox(
+                        width: 10,
+                      ),
+                      FollowCount(
+                          count: user.followers.length, text: 'Followers'),
+                    ],
+                  ),
+                  const SizedBox(
+                    height: 2,
+                  ),
+                  const Divider(
+                    color: Pallete.whiteColor,
                   ),
                 ],
               ),

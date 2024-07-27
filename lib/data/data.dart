@@ -134,6 +134,6 @@ UserModel user = const UserModel(
   bannerPic:
       'https://render.fineartamerica.com/images/rendered/default/poster/8.000/4.000/break/images/artworkimages/medium/1/nazi-flag-color-added-2016-david-lee-guss.jpg',
   uid: 'user069',
-  bio: 'A dead jewish is a good jewish',
+  bio: 'A dead jew is a good jew',
   isTwitterBlue: true,
 );
